@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Criptografar Texto...">
+    <link rel="apple-touch-icon" sizes="180x180" href="Public/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="Public/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="Public/favicon-16x16.png">
+    <link rel="manifest" href="Public/site.webmanifest">
+    <link rel="stylesheet" href="Css/styles.css" type="text/css" media="all">
+    <script src="./Plugins/Modal.js" defer></script>
+    <title>CripTexto</title>
+</head>
+
+<body>
+    <div class="area">
+        <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+   
+
+    <div id="modal-skins" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Modelos de Templates</h2>
+            <div class="container-iframes-templates">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container-components-strt">
+        <!-- Navegação -->
+        <header class="container-header">
+            <nav class="navigation">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Sobre</a></li>
+                    <li><a href="#">Contato</a></li>
+                </ul>
+            </nav>
+        </header>
+        <!-- Conteudo Actions -->
+        <section class="container-actions">
+            <div class="container-menu-history">
+                <div class="menu-tools">
+                    <div class="menu-tools_Logo">
+                        <img src="./Assets/Logo.svg" alt="Logo.svg" />
+                    </div>
+                    <div class="menu-tools_Buttons">
+                        <div class="button_icon">
+
+                            <button id="openModalSkins">
+                                Skins
+                                <img src="./Assets/Icons/Skins.svg" alt="icon Templates" />
+                            </button>
+
+                        </div>
+                        <div class="button_icon">
+                            <button id="openModalHistory">
+                                History
+                                <img src="./Assets/Icons/History.svg" alt="icon Ferramentas" />
+                            </button>
+                        </div>
+                        <div class="button_icon">
+                            <button>
+                                Share
+                                <img src="./Assets/Icons/Share.svg" alt="icon Compartilhar" />
+                            </button>
+
+                        </div>
+                        <div class="button_icon">
+                            <button>
+                                Tools
+                                <img src="./Assets/Icons/Tools.svg" alt="icon Ferramentas" />
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="container-criptografia">
+                <div class="container-criptografia_header_actions">
+                    <div class="container-criptografia_header_actions_buttons">
+                        <button id="gooey-button">
+                            Importar
+                            <span class="bubbles">
+                                <span class="bubble"></span>
+                                <span class="bubble"></span>
+                                <span class="bubble"></span>
+                                <span class="bubble"></span>
+                                <span class="bubble"></span>
+                                <span class="bubble"></span>
+                                <span class="bubble"></span>
+                                <span class="bubble"></span>
+                                <span class="bubble"></span>
+                                <span class="bubble"></span>
+                            </span>
+                            <img src="./Assets/Icons/Import.svg" alt="icon Ferramentas" />
+                            <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+                                <defs>
+                                    <filter id="gooey">
+                                        <!-- in="sourceGraphic" -->
+                                        <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
+                                        <feColorMatrix in="blur" type="matrix"
+                                            values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
+                                            result="highContrastGraphic" />
+                                        <feComposite in="SourceGraphic" in2="highContrastGraphic" operator="atop" />
+                                    </filter>
+                                </defs>
+                            </svg>
+                        </button>
+
+                        <button>
+                            Configurar
+                            <img src="./Assets/Icons/Config.svg" alt="icon Ferramentas" />
+                        </button>
+                    </div>
+                </div>
+
+                <div class="container-criptografia_header_actions_cripto_texto">
+                    <textarea placeholder="Digite seu Texto..." id="texto_codificar"></textarea>
+                </div>
+
+                <div class="container-criptografia_header_actions_footer">
+                    <div class="container-criptografia_header_actions_footer_button">
+                        <button class="criptografar">
+                            <img src="./Assets/Icons/PadLock_Open.svg" </button>
+                    </div>
+                    <div class="container-criptografia_header_actions_footer_button">
+                        <button class="descriptografar" >
+                            <img src="./Assets/Icons/PadLock_Close.svg" </button>
+                    </div>
+                </div>
+            </div>
+            <div class="container-descriptografia">
+                <div class="container-descriptografia_header_actions">
+                    <div class="container-descriptografia_header_actions_title">
+                        <h1>Codigo Gerado</h1>
+                    </div>
+                </div>
+                <div class="container-descriptografar_header_actions_cripto_texto">
+                    <textarea disabled id="texto_codificado"></textarea>
+                </div>
+                <button class="container-descriptografia_header_actions_footer_link_skin">
+                    Criar Skin
+                    <img src="./Assets/Icons/ArrowLink.svg" alt="Icon de Link" />
+                </button>
+
+                <div class="container-descriptografia_header_actions_footer">
+                    <div class="container-descriptografar_header_actions_footer_button">
+                        <button>
+                            Copiar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="./Js/Criptografar.js"></script>
+    <script src="./Js/Descriptografar.js"></script>
+    <script src="./Js/Templates.js"></script>
+</body>
+
+</html>

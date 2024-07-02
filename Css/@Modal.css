@@ -1,0 +1,138 @@
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    animation: fadeIn 0.5s;
+    font-family: var(--font-family);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.modal-content {
+    position: relative;
+    background-color: var(--color-primary);
+    margin: 9% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    height: 60%;
+    border-radius: 10px;
+    animation: slideIn 0.5s;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.modal-content>h2 {
+    color: var(--color-danger);
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.container-iframes-templates {
+    display: flex;
+    width: 100%;
+    height: 90%;
+    padding: 2rem;
+    gap: 1rem;
+    flex-direction: column;
+    overflow: hidden;
+    overflow-y: scroll;
+
+}
+
+.container-iframes-templates_iframe_p {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+}
+
+.container-iframes-templates_iframe_p p {
+    color: var(--color-ligth);
+    font-size: 1.5rem;
+    background-color: var(--color-secondary);
+    text-align: center;
+    border-radius: 1rem;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
+}
+
+.banner_img{
+    width: 100%;
+    height: 10rem;
+    overflow: hidden;
+}
+
+.container-iframes-templates_iframe_p img {
+   width: 100%;
+
+}
+
+.container-iframes-templates_iframe_p button{
+    cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        gap: 1rem;
+        background: none;
+        border: none;
+        border: 3px solid var(--color-ligth);
+        font-size: 1.3rem;
+        color: var(--color-ligth);
+        padding: 0.3rem 1rem;
+        border-radius: 4px;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        -ms-border-radius: 4px;
+        -o-border-radius: 4px;
+}
+
+.container-button-modal{
+    width: 100%;
+        display: flex;
+    
+        gap: 1rem;
+}

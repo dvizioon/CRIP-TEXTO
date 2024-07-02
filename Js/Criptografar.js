@@ -1,4 +1,4 @@
-function inicializad() {
+function inicializarCriptor() {
     const btn_criptografar = document.querySelector(".criptografar");
     const texto_codificar = document.querySelector("#texto_codificar");
     const texto_codificado = document.querySelector("#texto_codificado");
@@ -98,5 +98,5 @@ function inicializad() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    inicializad();
+    inicializarCriptor();
 });

@@ -1,4 +1,4 @@
-function inicializar() {
+function inicializarDescriptor() {
     const btnDescriptografar = document.querySelector(".descriptografar");
     const inputTextoCodificar = document.querySelector("#texto_codificar");
     const inputTextoCodificado = document.querySelector("#texto_codificado");
@@ -75,5 +75,5 @@ function inicializar() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    inicializar();
+    inicializarDescriptor();
 });

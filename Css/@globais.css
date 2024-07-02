@@ -35,46 +35,42 @@
 
 body {
     height: 100vh;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
     position: relative;
     background-color: #4ec8ad;
-    
+
 }
 
 /* HTML: <div class="loader"></div> */
 .loader {
-  --d:22px;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  color: #25b09b;
-  box-shadow: 
-    calc(1*var(--d))      calc(0*var(--d))     0 0,
-    calc(0.707*var(--d))  calc(0.707*var(--d)) 0 1px,
-    calc(0*var(--d))      calc(1*var(--d))     0 2px,
-    calc(-0.707*var(--d)) calc(0.707*var(--d)) 0 3px,
-    calc(-1*var(--d))     calc(0*var(--d))     0 4px,
-    calc(-0.707*var(--d)) calc(-0.707*var(--d))0 5px,
-    calc(0*var(--d))      calc(-1*var(--d))    0 6px;
-  animation: l27 1s infinite steps(8);
-}
-@keyframes l27 {
-  100% {transform: rotate(1turn)}
+    --d: 22px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    color: #25b09b;
+    box-shadow:
+        calc(1*var(--d)) calc(0*var(--d)) 0 0,
+        calc(0.707*var(--d)) calc(0.707*var(--d)) 0 1px,
+        calc(0*var(--d)) calc(1*var(--d)) 0 2px,
+        calc(-0.707*var(--d)) calc(0.707*var(--d)) 0 3px,
+        calc(-1*var(--d)) calc(0*var(--d)) 0 4px,
+        calc(-0.707*var(--d)) calc(-0.707*var(--d))0 5px,
+        calc(0*var(--d)) calc(-1*var(--d)) 0 6px;
+    animation: l27 1s infinite steps(8);
 }
 
-.container-components-strt {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    /* background-color: aquamarine; */
-    gap: 1rem;
-    padding: 1rem;
-    position: relative;
+@keyframes l27 {
+    100% {
+        transform: rotate(1turn)
+    }
+}
+
+
+.swal-title {
+    font-family: var(--font-family);
+}
+
+.swal-content {
+    font-family: var(--font-family);
 }
 
 img {
@@ -86,6 +82,8 @@ img {
 .area {
     width: 100%;
     height: 100vh;
+    position: absolute;
+    z-index: -1;
 }
 
 .circles {
@@ -230,7 +228,7 @@ img {
 
 *::-webkit-scrollbar-thumb {
     border-radius: 5px;
-    cursor:default;
+    cursor: default;
     background-color: #ffffff;
 }
 

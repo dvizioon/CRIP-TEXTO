@@ -1,5 +1,6 @@
 @import url(./@globais.css);
 @import url(./@Modal.css);
+
 /* 
 
 > Para melhorar a Navegação
@@ -10,6 +11,18 @@
 
 
 */
+.container-components-strt {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* background-color: aquamarine; */
+    gap: 1rem;
+    padding: 1rem;
+    position: relative;
+}
 
 .container-header {
     width: 100%;
@@ -123,7 +136,7 @@
     padding: 1rem;
     border-radius: 10px;
     background-color: var(--color-ligth);
-    justify-content:space-around;
+    justify-content: space-around;
     border: none;
     width: 100%;
     height: 100%;
@@ -864,7 +877,7 @@ svg {
     -o-border-radius: 59.5px;
 }
 
-.container-descriptografia_header_actions_footer_link_skin{
+.container-descriptografia_header_actions_footer_link_skin {
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -875,6 +888,42 @@ svg {
     border: none;
     cursor: pointer;
     font-size: 1.2rem;
-        color: var(--color-primary);
+    color: var(--color-primary);
+
+}
+
+/* Media Queries */
+@media (max-width: 999px) {
+    html {
+        font-size: 70%;
+    }
+}
+
+@media (max-width: 480px) {
+    .container-components-strt {
+        width: 100%;
+        height: 100%;
+        display: block;
+        /* background-color: aquamarine; */
+        gap: 1rem;
+        padding: 1rem;
+        position: relative;
+    }
+    
+    .modal-content{
+        width: 90%;
+    }
+
+    .container-actions {
+        display: flex;
+        justify-content: center;
+        margin-top: 7rem;
+        flex-direction: column;
+        height: 250%;
+    }
+
+    .container-criptografia_header_actions_cripto_texto {
+        background-size: 90%;
+    }
 
 }

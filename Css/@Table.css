@@ -1,0 +1,66 @@
+/* Tabela */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+
+   
+    
+}
+
+th {
+    padding: 12px 15px;
+
+    text-align:center;
+    /* border-bottom: 1px solid #ddd; */
+}
+
+td {
+    padding: 12px 15px;
+
+    /* text-align:center; */
+    /* border-bottom: 1px solid #ddd; */
+}
+
+th {
+    background-color: #f5f5f5;
+    color: #333;
+    font-weight: bold;
+    text-transform: uppercase;
+
+}
+
+td {
+    color: white;
+}
+
+tr:hover  {
+    background-color: var(--color-secondary);
+    color: var(--text-primary);
+}
+
+/* Ações */
+.actions {
+    display: flex;
+    gap: 5px;
+}
+
+.actions a {
+    text-decoration: none;
+    padding: 8px 15px;
+    /* background-color: #007bff; */
+    color: white;
+    border-radius: 4px;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.actions a:hover {
+    /* background-color: #0056b3; */
+}
+
+.history{
+    overflow: hidden;
+    height: 90%;
+    overflow-y: scroll;
+}

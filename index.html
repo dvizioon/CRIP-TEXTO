@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -10,11 +10,12 @@
     <link rel="icon" type="image/png" sizes="16x16" href="Public/favicon-16x16.png">
     <link rel="manifest" href="Public/site.webmanifest">
     <link rel="stylesheet" href="Css/styles.css" type="text/css" media="all">
-    <script src="./Plugins/Modal.js" defer></script>
-    <!-- SweetAlert2 CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-    <!-- SweetAlert2 JS -->
+    <script src="./Plugins/Modal.js" defer></script>
+    <script src="./Js/Assistent.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript" src="./db/src/LocalDB.js"></script>
+    
     <title>CripTexto</title>
 </head>
 
@@ -34,7 +35,7 @@
         </ul>
     </div>
 
-   
+
 
     <div id="modal-skins" class="modal">
         <div class="modal-content">
@@ -46,14 +47,85 @@
         </div>
     </div>
 
+    <div id="modal-history" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Historico de Templates</h2>
+            <div class="history">
+                <table id="template-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome da Template</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Linhas da tabela serão inseridas dinamicamente aqui -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-paint" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Desenhar Template</h2>
+            
+            <div class="paint">
+                <div class="modal_paint_tools" style="position: relative;">
+                    <div class="panel-security">
+                        <span class="close_panel">&times;</span>
+                        <h4>Configurações de Segurança</h4>
+                        <input type="text" id="name_docs" placeholder="Nome do Documento ..." value="documento">
+                        <input type="password" id="password" name="Senha do Documento ..." placeholder="Password">
+                        <!-- <button type="submit">Salvar Configurações</button> -->
+                    </div>
+                    <div class="entry-paint">
+                        <input type="text" id="text_seacher" placeholder="Criar Template..." maxlength="20" />
+                        <button class="search-find-template">🔎</button>
+                    </div>
+                    <div style="display: flex; position: relative;">
+
+                        <button class="container-descriptografia_header_actions_footer_link_skin"
+                            id="openConfigSecurity">
+                            Security
+                            <img src="./Assets/Icons/encrip.svg" alt="Icon de Link" />
+                        </button>
+                        <button class="container-descriptografia_header_actions_footer_link_skin">
+                            Fullscreen
+                            <img src="./Assets/Icons/ArrowLink.svg" alt="Icon de Link" />
+                        </button>
+                    </div>
+                    <div class="panel">
+                        <select class="save-options" id="select-method-save-paint">
+                            <option value="save-html">Salvar HTML</option>
+                            <option value="save-pdf">Salvar PDF</option>
+                            <option value="save-pdf-password">Salvar PDF + Senha</option>
+                        </select>
+                    </div>
+                    <div class="container-save-paint">
+                        <button id="insert-data">Salvar</button>
+                    </div>
+                    <div class="container-save-paint">
+                        <button id="download_btn" class="download_btn">Baixar</button>
+                    </div>
+
+                </div>
+                <div class="modal_paint_view"></div>
+            </div>
+        </div>
+    </div>
+
     <div class="container-components-strt">
         <!-- Navegação -->
         <header class="container-header">
             <nav class="navigation">
                 <ul>
-                    <li><a href="#">Home</a></li>
+                    <li><a href="#">GitHub</a></li>
                     <li><a href="#">Sobre</a></li>
-                    <li><a href="#">Contato</a></li>
+                    <li><a href="#">Linkedin</a></li>
                 </ul>
             </nav>
         </header>
@@ -65,14 +137,7 @@
                         <img src="./Assets/Logo.svg" alt="Logo.svg" />
                     </div>
                     <div class="menu-tools_Buttons">
-                        <div class="button_icon">
 
-                            <button id="openModalSkins">
-                                Skins
-                                <img src="./Assets/Icons/Skins.svg" alt="icon Templates" />
-                            </button>
-
-                        </div>
                         <div class="button_icon">
                             <button id="openModalHistory">
                                 History
@@ -147,7 +212,7 @@
                             <img src="./Assets/Icons/PadLock_Open.svg" </button>
                     </div>
                     <div class="container-criptografia_header_actions_footer_button">
-                        <button class="descriptografar" >
+                        <button class="descriptografar">
                             <img src="./Assets/Icons/PadLock_Close.svg" </button>
                     </div>
                 </div>
@@ -161,10 +226,16 @@
                 <div class="container-descriptografar_header_actions_cripto_texto">
                     <textarea disabled id="texto_codificado"></textarea>
                 </div>
-                <button class="container-descriptografia_header_actions_footer_link_skin">
-                    Criar Skin
-                    <img src="./Assets/Icons/ArrowLink.svg" alt="Icon de Link" />
-                </button>
+                <div class="container-actions-button-descriptografia">
+                    <button id="openModalSkins" class="container-descriptografia_header_actions_footer_link_skin">
+                        Criar Skin
+                        <img src="./Assets/Icons/ArrowLink.svg" alt="Icon de Link" />
+                    </button>
+                    <button id="openModalPaint" class="container-descriptografia_header_actions_footer_link_skin">
+                        Desenhar Skin
+                        <img src="./Assets/Icons/ArrowLink.svg" alt="Icon de Link" />
+                    </button>
+                </div>
 
                 <div class="container-descriptografia_header_actions_footer">
                     <div class="container-descriptografar_header_actions_footer_button">
@@ -176,11 +247,13 @@
             </div>
         </section>
     </div>
-
+   
+    <script src="./Js/Download.js"></script>
     <script src="./Js/Criptografar.js"></script>
     <script src="./Js/Descriptografar.js"></script>
     <script src="./Js/Commands.js"></script>
     <script src="./Js/Templates.js"></script>
+    <script src="./Js/banco_dados.js"></script>
 </body>
 
 </html>

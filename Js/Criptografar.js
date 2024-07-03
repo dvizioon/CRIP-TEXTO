@@ -16,7 +16,7 @@ function inicializarCriptor() {
     function atualizarImagemDeFundo(element) {
         if (element.value === "") {
             element.setAttribute('style', `
-                background-image: url(../Assets/Person.svg);
+                background-image: url(./Assets/Person.svg);
                 background-repeat: no-repeat;
                 background-size: auto;
                 background-position: center;

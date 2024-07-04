@@ -358,3 +358,45 @@
 .entry-paint input[type='text']::placeholder {
     font-size: 1rem;
 }
+
+
+.sd-import{
+    width: 100%;
+    height: 90%;
+    overflow: hidden;
+    overflow-y: scroll;
+    display: flex;
+        align-items: center;
+        gap: 1rem;
+    
+}
+
+.sd_import_button {
+    width: 100%;
+    height: 90%;
+    font-family: var(--font-family);
+    font-weight: 700;
+}
+
+.sd_import_button button{
+    width: 100%;
+    height: 50%;
+    border-radius: 1rem;
+    background:none;
+    border: 1px solid var(--color-ligth);
+    cursor: pointer;
+    font-size: 2rem;
+    color: var(--color-ligth);
+    transition: all 0.4s;
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    -ms-transition: all 0.4s;
+    -o-transition: all 0.4s;
+}
+.sd_import_button button:hover{
+    transform: translatey(-5%);
+    -webkit-transform: translatey(-5%);
+    -moz-transform: translatey(-5%);
+    -ms-transform: translatey(-5%);
+    -o-transform: translatey(-5%);
+}

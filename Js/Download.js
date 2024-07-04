@@ -20,41 +20,234 @@ function saveDB(template, content) {
 }
 
 
+async function createPdf() {
+    const { PDFDocument, rgb } = PDFLib;
+
+    const imageUrl = './Assets/Logo.jpg';
+    const imgBytes = await fetch(imageUrl).then(res => res.arrayBuffer());
+    const pdfDoc = await PDFDocument.create();
+    let img;
+    if (imageUrl.endsWith('.png')) {
+        img = await pdfDoc.embedPng(imgBytes);
+    } else if (imageUrl.endsWith('.jpg') || imageUrl.endsWith('.jpeg')) {
+        img = await pdfDoc.embedJpg(imgBytes);
+    } else {
+        throw new Error('Formato de imagem não suportado!');
+    }
+
+    const imgDims = img.scale(0.9);
+    const page = pdfDoc.addPage([600, 800]);
+    const x = (page.getWidth() - imgDims.width) / 2;
+    const y = (page.getHeight() - imgDims.height) / 2 + 270;
+    const padding = 5; 
+
+    page.drawImage(img, {
+        x: x,
+        y: y,
+        width: imgDims.width,
+        height: imgDims.height,
+    });
+
+    const content = texto_criptografador_doc.value;
+
+    const fontSize = 15;
+    const lineHeight = fontSize * 1.2;
+    const lines = content.split('\n').flatMap(line => {
+        const words = line.split(' ');
+        const lines = [];
+        let currentLine = '';
+        for (const word of words) {
+            if (currentLine.length + word.length + 1 <= 50) {
+                currentLine += (currentLine.length === 0 ? '' : ' ') + word;
+            } else {
+                lines.push(currentLine);
+                currentLine = word;
+            }
+        }
+        lines.push(currentLine);
+        return lines;
+    });
+
+    const textHeight = lines.length * lineHeight;
+    const textWidth = 500;
+    const textX = (page.getWidth() - textWidth) / 2;
+    const textY = y - 50 - textHeight;
+
+    const red = 10 / 255; 
+    const green = 56 / 255; 
+    const blue = 113 / 255; 
+
+    page.drawRectangle({
+        x: textX,
+        y: textY,
+        width: textWidth,
+        height: textHeight,
+        borderColor: rgb(red, green, blue),
+        borderWidth: 2,
+        padding: 2,
+    });
+
+    lines.forEach((line, i) => {
+        page.drawText(line, {
+            x: textX + 10,
+            y: textY + textHeight - lineHeight * (i + 1),
+            size: fontSize,
+            color: rgb(41 / 255, 186 / 255, 99 / 255), 
+            maxWidth: textWidth - 20,
+        });
+    });
+
+    const pdfBytes = await pdfDoc.save();
+    const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+    const link = document.createElement('a');
+    link.download = `${name_document.value}.pdf`;
+    link.href = URL.createObjectURL(blob);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+
+// createPdf()
+
+// async function createPdfandKey() {
+//     // Defina o conteúdo do PDF
+//     const conteudo = 'Olá, mundo!';
+
+//     // Defina as configurações do documento
+//     const docDefinition = {
+//         content: conteudo,
+//         userPassword: 'minhaSenha', // Defina a senha desejada
+//     };
+
+//     // Crie o PDF
+//     pdfMake.createPdf(docDefinition).download('meu-arquivo-com-senha.pdf');
+
+// }
+
+
+// async function createPdfandKey() {
+//     const doc = new jsPDF({
+//         encryption: {
+//             userPassword: "user",
+//             ownerPassword: "owner",
+//             userPermissions: ["print", "modify", "copy", "annot-forms"]
+//         }
+//     });
+//     doc.text("Conteúdo do PDF protegido por senha.", 10, 10);
+
+//     // Salve o arquivo
+//     doc.save("meu_arquivo_protegido.pdf");
+// }
+
+
+async function createPdfandKey() {
+    // Carregar a imagem
+    const imageUrl = './Assets/Logo.jpg';
+    const imgBytes = await fetch(imageUrl).then(res => res.arrayBuffer());
+    let imgDataUri;
+
+    // Carregar a imagem como Data URI para jsPDF
+    const imgBlob = new Blob([imgBytes], { type: 'image/jpeg' });
+    const reader = new FileReader();
+    reader.readAsDataURL(imgBlob);
+    reader.onloadend = function () {
+        imgDataUri = reader.result;
+    };
+
+    // Exibir um alerta para definir a senha do documento
+    const { value: userPassword } = await Swal.fire({
+        title: 'Defina a senha do documento',
+        input: 'password',
+        inputPlaceholder: 'Digite a senha',
+        inputAttributes: {
+            autocapitalize: 'off',
+            autocorrect: 'off'
+        },
+        customClass: {
+            title: 'swal-title',
+            input: 'swal-input',
+        },
+        showCancelButton: true,
+        confirmButtonText: 'Criar PDF',
+        cancelButtonText: 'Cancelar',
+        showLoaderOnConfirm: true,
+        preConfirm: async (password) => {
+            if (!password) {
+                Swal.showValidationMessage('Por favor, digite a senha');
+            }
+            return password;
+        }
+    });
+
+    // Se o usuário cancelar ou não definir a senha, encerrar a função
+    if (!userPassword) {
+        return;
+    }
+
+    // Configurações para desenhar o PDF com jsPDF
+    const doc = new jsPDF({
+        encryption: {
+            userPassword: userPassword,
+            ownerPassword: 'ower-123',
+            permissions: {
+                printing: 'highResolution',
+                modifying: false,
+                copying: false,
+                annotating: false,
+                fillingForms: false,
+                contentAccessibility: false,
+                documentAssembly: false,
+            }
+        }
+        
+    });
+
+    // Incorporar a imagem no documento PDF
+    if (imgDataUri) {
+        doc.addImage(imgDataUri, 'JPEG', 40, 40, 100, 100); // Exemplo de posição e tamanho
+    } else {
+        throw new Error('Formato de imagem não suportado!');
+    }
+
+    // Obter o conteúdo do textarea
+    const content = texto_criptografador_doc.value;
+
+    // Configurações para desenhar o retângulo e o texto no PDF
+    const fontSize = 12;
+    const margin = 10;
+    let y = 160; // Posição inicial do texto
+
+    // Desenhar retângulo
+    doc.rect(margin, y - margin, doc.internal.pageSize.width - margin * 2, doc.internal.pageSize.height - margin * 2, 'S');
+
+    // Dividir o conteúdo em linhas e desenhar no PDF
+    const lines = doc.splitTextToSize(content, doc.internal.pageSize.width - margin * 2);
+    doc.setFontSize(fontSize);
+    doc.setTextColor(0, 0, 0);
+    lines.forEach(line => {
+        doc.text(line, margin, y);
+        y += fontSize + 5; // Espaçamento entre linhas
+    });
+
+    // Salvar e baixar o documento PDF
+
+    // if (!!name.value === "", Object.prototype(name.value)) {
+    //         doc.save(`PDF is not Valid`)
+    // } else {
+    //         doc.save(`is Valid`)
+    // }
+
+
+    doc.save(`${name_document.value}.pdf`);
+}
+
+// createPdfandKey()
+
 function Downloads(html, type) {
 
     close_panel.onclick = () => {
         panel_security.style.visibility = "hidden"
     }
-
-    if (password_document.value === "") {
-        Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "Você não definiu uma Senha!!!",
-            customClass: {
-                title: 'swal-title',
-                content: 'swal-content',
-            }
-        });
-        panel_security.style.visibility = "visible"
-        return
-    }
-
-    if (name_document.value === "") {
-        Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "Você não definiu Nome do documento!!!",
-            customClass: {
-                title: 'swal-title',
-                content: 'swal-content',
-            }
-        });
-        panel_security.style.visibility = "visible"
-        return
-    }
-
-
 
 
 
@@ -177,15 +370,50 @@ function Downloads(html, type) {
         </html>
     `
     if (type === "save-html") {
+
+        if (password_document.value === "") {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Você não definiu uma Senha!!!",
+                customClass: {
+                    title: 'swal-title',
+                    content: 'swal-content',
+                }
+            });
+            panel_security.style.visibility = "visible"
+            return
+        }
+
+        if (name_document.value === "") {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Você não definiu Nome do documento!!!",
+                customClass: {
+                    title: 'swal-title',
+                    content: 'swal-content',
+                }
+            });
+            panel_security.style.visibility = "visible"
+            return
+        }
+
         const blob = new Blob([container], { type: "text/html" });
         const url = URL.createObjectURL(blob);
         const a = document.createElement("a");
         a.href = url;
-        a.download = "documento.html";
+        a.download = `${name_document.value}.html`;
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
         URL.revokeObjectURL(url);
+        
     }
-
+    else if (type === "save-pdf") {
+        createPdf()
+    }
+    else if (type === "save-pdf-password") {
+        createPdfandKey()
+    }
 }

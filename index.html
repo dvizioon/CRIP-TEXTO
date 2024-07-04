@@ -11,8 +11,22 @@
     <link rel="manifest" href="Public/site.webmanifest">
     <link rel="stylesheet" href="Css/styles.css" type="text/css" media="all">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/vfs_fonts.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/pdf-lib/dist/pdf-lib.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pdf-lib/dist/pdf-lib.js"></script>
+    <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+    <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.js"></script>
+    <script src="https://unpkg.com/pdf-lib@1.4.0/dist/pdf-lib.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.4.0/dist/pdf-lib.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+   
     <script src="./Plugins/Modal.js" defer></script>
     <script src="./Js/Assistent.js" defer></script>
+    <script src="./Plugins/Import.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="text/javascript" src="./db/src/LocalDB.js"></script>
     
@@ -47,6 +61,21 @@
         </div>
     </div>
 
+    <div id="modal-import" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Extensões Aceitas</h2>
+            <div class="sd-import">
+                <div class="sd_import_button">
+                    <button data-type="txt">TXT</button>
+                </div>
+                <div class="sd_import_button" data-type="pdf">
+                    <button>PDF</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div id="modal-history" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
@@ -77,7 +106,7 @@
                 <div class="modal_paint_tools" style="position: relative;">
                     <div class="panel-security">
                         <span class="close_panel">&times;</span>
-                        <h4>Configurações de Segurança</h4>
+                        <h4>Configurações de Download 📦</h4>
                         <input type="text" id="name_docs" placeholder="Nome do Documento ..." value="documento">
                         <input type="password" id="password" name="Senha do Documento ..." placeholder="Password">
                         <!-- <button type="submit">Salvar Configurações</button> -->
@@ -166,7 +195,7 @@
             <div class="container-criptografia">
                 <div class="container-criptografia_header_actions">
                     <div class="container-criptografia_header_actions_buttons">
-                        <button id="gooey-button">
+                        <button id="gooey-button" class="openModalImport">
                             Importar
                             <span class="bubbles">
                                 <span class="bubble"></span>
@@ -247,7 +276,9 @@
             </div>
         </section>
     </div>
-   
+    <script>
+        window.jsPDF = window.jspdf.jsPDF;
+    </script>
     <script src="./Js/Download.js"></script>
     <script src="./Js/Criptografar.js"></script>
     <script src="./Js/Descriptografar.js"></script>

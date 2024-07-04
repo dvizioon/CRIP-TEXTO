@@ -8,7 +8,7 @@
 
 :root {
     /* Cores Components */
-    --color-primary: #0A3871;
+    --color-primary: rgb(10, 56, 113);
     --color-secondary: #29ba63da;
     --color-danger: #DA5A5A;
     /* Cores tem Branco */
@@ -17,7 +17,7 @@
     /* Fonts */
     --font-family: "Inter", sans-serif;
     /* Text-color */
-    --text-primary: #0A3871;
+    --text-primary: rgb(10, 56, 113);
     --text-secondary: #29BA63;
     --text-danger: #DA5A5A;
 }
@@ -240,3 +240,8 @@ img {
 *::-webkit-scrollbar-thumb:active {
     background-color: #62A34B;
 } */
+
+.swal2-modal{
+    font-family: var(--font-family);
+    font-weight:700;
+}

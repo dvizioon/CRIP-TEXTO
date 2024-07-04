@@ -32,7 +32,7 @@ openConfigSecurity.addEventListener('click', () => {
 
 // Button Download
 button_download.addEventListener('click', () => {
-    const html = container_frame.innerHTML
+    const html = container_frame.innerHTML === "" ? "<h1>Bem vindo ao CripTexto</h1>" : container_frame.innerHTML
     Downloads(html, select_metodo_save.value)
 })
 

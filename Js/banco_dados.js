@@ -203,10 +203,10 @@ function downloadTemplate(templateId) {
         return
     } else {
         Swal.fire({
-            title: "Enter your password",
+            title: "Senha do Documento ",
             input: "password",
-            inputLabel: "Password",
-            inputPlaceholder: "Enter your password",
+            inputLabel: "Criar Senha",
+            inputPlaceholder: "Digite a Senha para salvar no Documento",
             inputAttributes: {
                 maxlength: "10",
                 autocapitalize: "off",

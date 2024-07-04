@@ -71,7 +71,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const modals = [
         { modalId: 'modal-skins', buttonId: 'openModalSkins', elementoEmpyt: 'texto_codificado', actions: [] },
         { modalId: 'modal-paint', buttonId: 'openModalPaint', elementoEmpyt: 'texto_codificado', actions: [] },
-        { modalId: 'modal-history', buttonId: 'openModalHistory', actions: [{ 'tbody': loadTemplates }] }
+        { modalId: 'modal-history', buttonId: 'openModalHistory', actions: [{ 'tbody': loadTemplates }] },
+        { modalId: 'modal-import', buttonId: 'gooey-button'}
     ];
 
     modals.forEach(modal => {

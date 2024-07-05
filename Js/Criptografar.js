@@ -75,9 +75,16 @@ function inicializarCriptor() {
     }
 
     btn_criptografar.addEventListener('click', () => {
+        const { letras, numeros, simbolos, } = JSON.parse(logCheckedCheckboxes())
+        let options = {
+            numbers: numeros,
+            letters: letras,
+            specials: simbolos
+        };
+        // console.log(letras,numeros,simbolos)
         // Verificar se o elemento está vazio e atualizar a imagem de fundo
         atualizarImagemDeFundo(texto_codificado);
-
+        // console.log(logCheckedCheckboxes());  // Mostra as opções iniciais no console
         // Texto para Binario
         let texto_para_banario = texto_codificar.value;
         let texto_convert_Binario = textoParaBinario(texto_para_banario);
@@ -85,8 +92,9 @@ function inicializarCriptor() {
         // Inverter Valor Binario
         let inverter_valor_binario = inverterTexto(texto_convert_Binario);
 
+
         // Inserir Simbolos Controlados
-        let adicionar_simbolos = inserirSimbolos(inverter_valor_binario);
+        let adicionar_simbolos = inserirSimbolos(inverter_valor_binario, options);
 
         // Saida do Resultado
         texto_codificado.value = adicionar_simbolos;

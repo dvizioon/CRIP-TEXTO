@@ -42,6 +42,7 @@ class Modal {
 
     openModal() {
         this.modal.style.display = "block";
+        this.modal.style.display = "flex";
     }
 
     closeModal() {
@@ -72,7 +73,8 @@ document.addEventListener('DOMContentLoaded', () => {
         { modalId: 'modal-skins', buttonId: 'openModalSkins', elementoEmpyt: 'texto_codificado', actions: [] },
         { modalId: 'modal-paint', buttonId: 'openModalPaint', elementoEmpyt: 'texto_codificado', actions: [] },
         { modalId: 'modal-history', buttonId: 'openModalHistory', actions: [{ 'tbody': loadTemplates }] },
-        { modalId: 'modal-import', buttonId: 'gooey-button'}
+        { modalId: 'modal-import', buttonId: 'gooey-button'},
+        { modalId: 'modal-configuration', buttonId: 'openModalConfigurationBtn'}
     ];
 
     modals.forEach(modal => {

@@ -82,15 +82,6 @@ graph TD;
     D -- Senha Incorreta --> F[Recusa de acesso];
     E --> G[Processo de Autorização];
     F --> H[Fim];
-
-    style A fill:#6CB8B2,stroke:#333,stroke-width:2px;
-    style B fill:#9BB7D4,stroke:#333,stroke-width:2px;
-    style C fill:#FFD7B2,stroke:#333,stroke-width:2px;
-    style D fill:#E5E4E2,stroke:#333,stroke-width:2px;
-    style E fill:#A2D2FF,stroke:#333,stroke-width:2px;
-    style F fill:#F3B6B3,stroke:#333,stroke-width:2px;
-    style G fill:#A2D2FF,stroke:#333,stroke-width:2px;
-    style H fill:#E5E4E2,stroke:#333,stroke-width:2px;
 ```
 
 

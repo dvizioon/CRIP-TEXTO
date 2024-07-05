@@ -1,10 +1,11 @@
 # CripTexto
 <img src="./Assets/Screenshots/01.png" alt="" />
-<img src="./Assets/Screenshots/07.png" alt="" />
-
 
 ## Descrição
 O **CripTexto** é uma aplicação web desenvolvida para criptografar e descriptografar textos, além de oferecer funcionalidades adicionais como importação de arquivos PDF e TXT, manipulação de templates e geração de documentos em PDF, você pode usar Temas já prontos ou pode criar seu propios tema usando AI, isso usando um estilo propio de cbt ou seja com base no tema fonercido a AI gerar um tema usando um findTunner Especifico.
+
+## Vizualizar Projeto
+[Entre aqui para Vizualizar 📦](https://dvizioon.github.io/CRIP-TEXTO/)
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
@@ -13,6 +14,10 @@ O **CripTexto** é uma aplicação web desenvolvida para criptografar e descript
 ![pdf.js](https://img.shields.io/badge/pdf.js-FFB900?style=for-the-badge&logo=javascript&logoColor=white)
 ![SweetAlert2](https://img.shields.io/badge/SweetAlert2-FF5F6D?style=for-the-badge&logo=javascript&logoColor=white)
 ![LocalDB.js](https://img.shields.io/badge/LocalDB.js-1F2D3D?style=for-the-badge&logo=javascript&logoColor=white)
+
+
+## Desafio da Alura
+<img src="./Assets/Screenshots/07.png" width=200 alt="" />
 
 
 ## Índice
@@ -56,6 +61,8 @@ libera a AI em seu IP -> (IPV4) -> Publico
 Assim você poderar usar um AI do Aplicativo
 e para fazer isso precisar criar um Proxy trasparente e conectar o 
 DNS nesse proxy para criar a chave de autenticação
+![LocalDB.js](https://img.shields.io/badge/IPV4-1F2D3D?style=for-the-badge&logo=jav&logoColor=white)
+
 <img src="./Assets/Screenshots/11.png" alt="" />
 <img src="./Assets/Screenshots/10.png" alt="" />
 
@@ -68,14 +75,22 @@ DNS nesse proxy para criar a chave de autenticação
 
 ```mermaid
 graph TD;
-    A[Início] --> B[Processo 1];
-    B --> C[Processo 2];
+    A[Início] --> B[Autenticação Inicial];
+    B --> C[Processo de Verificação];
     C --> D[Decisão];
-    D -- Opção 1 --> E[Processo 3];
-    D -- Opção 2 --> F[Processo 4];
-    E --> G[Fim];
-    F --> G;
+    D -- Senha Correta --> E[Permissão concedida];
+    D -- Senha Incorreta --> F[Recusa de acesso];
+    E --> G[Processo de Autorização];
+    F --> H[Fim];
 
+    style A fill:#6CB8B2,stroke:#333,stroke-width:2px;
+    style B fill:#9BB7D4,stroke:#333,stroke-width:2px;
+    style C fill:#FFD7B2,stroke:#333,stroke-width:2px;
+    style D fill:#E5E4E2,stroke:#333,stroke-width:2px;
+    style E fill:#A2D2FF,stroke:#333,stroke-width:2px;
+    style F fill:#F3B6B3,stroke:#333,stroke-width:2px;
+    style G fill:#A2D2FF,stroke:#333,stroke-width:2px;
+    style H fill:#E5E4E2,stroke:#333,stroke-width:2px;
 ```
 
 

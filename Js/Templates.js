@@ -224,7 +224,10 @@ function downloadTemplate_PrePronta(htmlRender, scriptRender, styleRender, templ
             }
         }).then((result) => {
             // console.log(result.value)
-            var content = `<!DOCTYPE html>
+            if (result.value === "" || result.value === null || result.value === undefined) {
+                return
+            } else {
+                var content = `<!DOCTYPE html>
             <html>
                 <head>
                     <meta charset="UTF-8">
@@ -339,18 +342,19 @@ function downloadTemplate_PrePronta(htmlRender, scriptRender, styleRender, templ
             </script>
             </html>`
 
-            var blob = new Blob([content], { type: 'text/html' });
-            var url = URL.createObjectURL(blob);
+                var blob = new Blob([content], { type: 'text/html' });
+                var url = URL.createObjectURL(blob);
 
-            var a = document.createElement('a');
-            a.href = url;
-            a.download = templateName + '.html';
-            document.body.appendChild(a);
-            a.click();
+                var a = document.createElement('a');
+                a.href = url;
+                a.download = templateName + '.html';
+                document.body.appendChild(a);
+                a.click();
 
-            // Limpa a referência do URL do objeto após o download
-            URL.revokeObjectURL(url);
-            document.body.removeChild(a);
+                // Limpa a referência do URL do objeto após o download
+                URL.revokeObjectURL(url);
+                document.body.removeChild(a);
+            }
 
 
         })
@@ -381,7 +385,7 @@ function addTemplates(templates) {
             <hr>
         `;
     });
-   
+
 }
 
 addTemplates(all_Templates);

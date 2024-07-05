@@ -174,6 +174,7 @@ btn_search.addEventListener('click', function () {
             <div class='info'>
                 <p>Click no Butão para Liberar</p>
                 <p>Depois Realize a pesquisa novamente</p>
+                <p>Caso vc já tenha liberador espera 5 Minutos</p>
                 <a href="https://cors-anywhere.herokuapp.com/corsdemo" target="_blank">Entre aqui caso não funcione !!!</a>
             </div>
                 <iframe src="https://cors-anywhere.herokuapp.com/corsdemo"></iframe>

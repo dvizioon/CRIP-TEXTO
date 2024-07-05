@@ -37,7 +37,7 @@ button_download.addEventListener('click', () => {
 })
 
 btn_search.addEventListener('click', function () {
-    
+
     if (input_search.value === "") {
         Swal.fire({
             title: "Opps!!!",
@@ -90,9 +90,9 @@ btn_search.addEventListener('click', function () {
         return question
     }
     const questao = Question(question)
-    
+
     const data = {
-        messages: [{ "content": questao , "role": "user" }],
+        messages: [{ "content": questao, "role": "user" }],
         previewToken: null,
         userId: "6e75da85-5501-4825-ae6b-cd19543d582c",
         codeModelMode: true,
@@ -145,7 +145,7 @@ btn_search.addEventListener('click', function () {
             container_frame.innerHTML = ``
 
             // console.log(responseText)
-            
+
             // Expressão regular para extrair o conteúdo dentro das marcações """ ... """
             const regex = /"""([\s\S]*)"""/;
             const matches = responseText.match(regex);
@@ -178,7 +178,6 @@ btn_search.addEventListener('click', function () {
                 <a href="https://cors-anywhere.herokuapp.com/corsdemo" target="_blank">Entre aqui caso não funcione !!!</a>
             </div>
                 <iframe src="https://cors-anywhere.herokuapp.com/corsdemo"></iframe>
-                                <iframe src="https://cors-anywhere.herokuapp.com/"></iframe>
             `
             console.error('Erro na requisição:', error);
         });

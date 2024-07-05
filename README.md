@@ -50,6 +50,35 @@ O **CripTexto** é uma aplicação web desenvolvida para criptografar e descript
 
 <br>
 
+## Para iniciar
+para iniciar primeiro vamos mapear seu sevidor Local para 
+libera a AI em seu IP -> (IPV4) -> Publico
+Assim você poderar usar um AI do Aplicativo
+e para fazer isso precisar criar um Proxy trasparente e conectar o 
+DNS nesse proxy para criar a chave de autenticação
+<img src="./Assets/Screenshots/11.png" alt="" />
+<img src="./Assets/Screenshots/10.png" alt="" />
+
+>[!IMPORTANT]
+>Entre aqui para Liberar o Seu Local<br>
+>https://cors-anywhere.herokuapp.com/corsdemo
+<img src="./Assets/Screenshots/12.png" alt="" />
+
+## Engenharia AI - AUTOAUTH
+
+```mermaid
+graph TD;
+    A[Início] --> B[Processo 1];
+    B --> C[Processo 2];
+    C --> D[Decisão];
+    D -- Opção 1 --> E[Processo 3];
+    D -- Opção 2 --> F[Processo 4];
+    E --> G[Fim];
+    F --> G;
+
+```
+
+
 ## Funcionalidades
 
 - **Criptografar e Descriptografar:** Permite aos usuários inserir texto e realizar operações de criptografia e descriptografia utilizando métodos seguros.

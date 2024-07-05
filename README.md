@@ -196,119 +196,14 @@ class FileImporter {
         }
     }
 
-    async handleFileChange(event) {
-        const file = event.target.files[0];
-
-        if (file) {
-            const reader = new FileReader();
-
-            reader.onload = async (e) => {
-                const content = e.target.result;
-
-                if (file.type === 'application/pdf') {
-                    const text = await this.extractTextFromPdf(content);
-                    this.displayContent(text);
-                } else {
-                    this.displayContent(content);
-                }
-            };
-
-            reader.onerror = (e) => {
-                console.error('Erro ao ler o arquivo', e);
-            };
-
-            if (file.type === 'application/pdf') {
-                reader.readAsArrayBuffer(file);
-            } else {
-                reader.readAsText(file);
-            }
-
-            this.fileInput.value = '';
-        } else {
-            console.log('Nenhum arquivo selecionado');
-        }
-    }
-
-    async extractTextFromPdf(arrayBuffer) {
-        let loadingTask;
-
-        try {
-            loadingTask = pdfjsLib.getDocument({ data: arrayBuffer });
-            const pdf = await loadingTask.promise;
-            let text = '';
-
-            for (let i = 0; i < pdf.numPages; i++) {
-                const page = await pdf.getPage(i + 1);
-                const textContent = await page.getTextContent();
-                const strings = textContent.items.map(item => item.str);
-                text += strings.join(' ') + '\n';
-            }
-
-            return text;
-        } catch (error) {
-            if (error.name === 'PasswordException') {
-                const { value: password } = await Swal.fire({
-                    title: 'PDF protegido',
-                    text: 'Digite a senha para abrir o PDF',
-                    input: 'password',
-                    inputPlaceholder: 'Senha',
-                    inputAttributes: {
-                        autocapitalize: 'off',
-                        autocorrect: 'off'
-                    },
-                    showCancelButton: true,
-                    confirmButtonText: 'Abrir',
-                    cancelButtonText: 'Cancelar'
-                });
-
-                if (password) {
-                    try {
-                        loadingTask = pdfjsLib.getDocument({ data: arrayBuffer, password });
-                        const pdf = await loadingTask.promise;
-                        let text = '';
-
-                        for (let i = 0; i < pdf.numPages; i++) {
-                            const page = await pdf.getPage(i + 1);
-                            const textContent = await page.getTextContent();
-                            const strings = textContent.items.map(item => item.str);
-                            text += strings.join(' ') + '\n';
-                        }
-
-                        return text;
-                    } catch (error) {
-                        Swal.fire('Erro', 'Senha incorreta ou erro ao abrir o PDF', 'error');
-                        throw error;
-                    }
-                } else {
-                    Swal.fire('Cancelado', 'Operação cancelada pelo usuário', 'info');
-                }
-            } else {
-                console.error('Erro ao extrair texto do PDF', error);
-                throw error;
-            }
-        }
-    }
-
-    displayContent(content) {
-        this.displayElement.textContent = content;
-        Swal.fire({
-            icon: 'success',
-            title: 'Sucesso!',
-            text: 'Arquivo importado com sucesso!',
-        });
-    }
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    const fileImporter = new FileImporter('.sd_import_button button', '#texto_codificar');
-});
+    ...
 
 ```
 
 >[!NOTE]
 >Para Vizualizar todos os Plugins diponiveis entre em `Plugins`.
 
-Você pode querer criar mais de uma Acionador aqui para modal 
+Você pode querer criar mais de um Acionador aqui para modal 
 
 ```javascript
 document.addEventListener('DOMContentLoaded', () => {
@@ -330,6 +225,31 @@ document.addEventListener('DOMContentLoaded', () => {
 - Actions: [
     `{'_elemento':_Atualização}`
 ] -> `Responsável por força atualização do elemento.`
+
+
+>[!NOTE]
+>Para Vizualizar Templates `Js/Templates.js`.
+
+Você pode querer criar mais de um Template
+
+```javascript
+const all_Templates = [
+    {
+        "cartão de Namoro": {
+            html: `
+               ...
+            `,
+            style: `
+               ...
+            `,
+            script: `
+               ...
+            `
+        }
+    }
+];
+```
+
 ## Fonts 
 >[!TIP]
 >`https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap `

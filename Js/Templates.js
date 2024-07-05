@@ -184,8 +184,6 @@ function openPopup(htmlRender, scriptRender, styleRender) {
     `);
     popup.document.close();
 
-    if (!popup || popup.closed || typeof popup.closed === 'undefined') {
-        alert('O popup foi bloqueado pelo navegador. Verifique as configurações de bloqueio de popups.');
     }
 }
 

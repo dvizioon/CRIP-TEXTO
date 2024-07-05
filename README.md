@@ -78,8 +78,8 @@ graph TD;
     A[Início] --> B[Autenticação Inicial];
     B --> C[Processo de Verificação];
     C --> D[Decisão];
-    D -- Senha Correta --> E[Permissão concedida];
-    D -- Senha Incorreta --> F[Recusa de acesso];
+    D -- USER + AUTH + CRF --> E[Permissão concedida];
+    D -- CRF + USER --> F[Recusa de acesso];
     E --> G[Processo de Autorização];
     F --> H[Fim];
 ```

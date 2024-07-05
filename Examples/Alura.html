@@ -1,0 +1,218 @@
+
+        <!DOCTYPE html>
+        <html lang='pt-BR'>
+
+        <head>
+            <meta charset='UTF-8'>
+            <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+            <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css'>
+            <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+            <title>document</title>
+            <style>
+            *{
+            
+                margin:0;
+                padding:0;
+                box-sizing: border-box;
+            }
+            
+                body {
+                    font-family: Arial, sans-serif;
+                    width:100vw;
+                    height: 100vh;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding:1rem;
+                }
+            </style>
+        </head>
+
+        <body>
+
+            
+                <div class="frame">
+                    
+
+
+
+    <title>Convite Tecnologico Azul</title>
+    <style>
+        /* Estilo para o tema Tecnologico Azul */
+        .cartao {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            gap: 10px;
+            background-color: #034692; /* Azul tecnologico */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .cartao h1 {
+            color: #FFFFFF; /* Branco */
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .cartao p {
+            color: #CCCCCC; /* Cinza claro */
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .texto_codificado {
+            display: flex;
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 10px;
+            background-color: #FFFFFF; /* Branco */
+            color: #034692; /* Azul tecnologico */
+        }
+        
+        .password {
+            display: flex;
+            width: 100%;
+            height: 40px;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 10px;
+            background-color: #FFFFFF; /* Branco */
+            color: #034692; /* Azul tecnologico */
+        }
+        
+        .descriptografar {
+            display: flex;
+            width: 100%;
+            height: 40px;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 10px;
+            background-color: #034692; /* Azul tecnologico */
+            color: #FFFFFF; /* Branco */
+            cursor: pointer;
+        }
+        
+        .texto_decifrado {
+            display: flex;
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 10px;
+            background-color: #FFFFFF; /* Branco */
+            color: #034692; /* Azul tecnologico */
+        }
+    </style>
+
+
+    <div class="cartao">
+        <!-- Aqui Colocar Titulo -->
+        <h1>Convite Tecnologico Azul</h1>
+        <!-- Aqui Sobre o tema : Pequeno Texto -->
+        <p>Descriptografe o texto codificado abaixo</p>
+        <!-- Aqui Colocar Msg para Descriptgrafar -->
+        <p>Digite a senha para descriptografar o texto</p>
+        <textarea id="texto_codificado" class="texto_codificado" placeholder="Digite o texto codificado aqui" disabled=""></textarea>
+        <input type="password" class="password" id="senha" placeholder="Digite a senha">
+        <button class="descriptografar">Descriptografar 🔓</button>
+        <textarea id="texto_decifrado" class="texto_decifrado" placeholder="Texto decifrado aparecerá aqui" readonly=""></textarea>
+    </div>
+
+
+
+                </div>
+            
+        
+            <script>
+                function inicializarDescriptor() {
+                    const btnDescriptografar = document.querySelector('.descriptografar');
+                    const inputTextoCodificar = document.querySelector('#texto_codificado');
+                    inputTextoCodificar.value = `1_0N0J0H0Y1{1S0. ]1&0^181S0]131I0# 2150M0X03051P1=0[ B0W1G0I0Y1O1G1J0# H1S1O140N0S1A1!0V {1<1K1*1F0>1<1K0& -051E050618191N0K G0_0K0M0U1O1!1_0R _0P0(0|0@0F1Q0+0Y !1T1L1+1[0>1B1P0Z 60E1)1[1|0)1A1,0[ -0?0P030H0N1I0O0_ $0V1|0L0Z1O1&1K04 91#0D0B0M0,1:1:0$ _1&0W1O0E1^1W1Q0! 60-1%1)1|0}1%180{ %1}0P081J0Z151W07 I0W0!1O0B1<151Q0] >0#171Z1F0M1&1+0E ?1U1J161T0:1R1}0) ?1^1I0B080D1.1}0* .0(040@0V0A130*0V P13161]1#0M121J0H K091W0>0|1S1]1B07 ;140.1O0_0;1|1Y0; P1,0S1R0P1Z1B1]0> A1[0N0K0>1:1C160L P0K0L0H0+061R0906 }1D1_0R0Q1_1(1U0D H1H0_0M1D0T1,120V ,1O0W0$0*0<1M1Q0* !1_0G17120C131X0B <1A0#1-0)0M1+1303 N0R0N1F0,0B1Y1+0N }0X070.0?0@180]0_ E1G1<1R1#0?1L130: A0F0}1&031?1E1:02 F1)050X1N03141$0R $1U0,1+0@1X1<1(0- <1!0B1?1|0V1M140E {0>0P040T0}1[0B0^ Z0V1U030P141)1G0G U1F0>0;1D0Q1S1S0C <1@0,1E0W1#1?1E0( 6040C1$1O0[151,07 Z1K1F1B1E071-120) :0;131|0?1=1R1Y0{ %17081.0,0B0^1K0Z D0J05070=0K1H0;0* .1*090R0L0,1E1J0, H0Q030(0&0N1L0.0| ]1*1,1+130L1:1)0, 60?0V160.0O1?1>0! =0M1[131E0|1V170Z -1V0Q040Q0_1V1<0* 90,0-1Y0M051Y1A0R <1:0Z130G1R1V1$0O !0?1M0=1,0}1+190@ 5170B0|0$0X121A0X }0^0-060L0)1N0>0I H1}0B1J0?0>1!1U06 ;1U0C1N1.051Z1O0K ?0D0!0M0S0(1G0+0M J1W0P0A0(0}1^1T1O S060W130^1;1!1I0$ [1Z1D0B031]171?0C B130C190)0%1E1,06 )0K0X0R0Z0^12080} ,1(0F0F0N0=1V1J0: A0V1&0-021K1M1-0Q {1<0@1_0T1>1U1I06 N0V0%1_160P1?1$0P _1Y0Z0I060N0?1}0L`;
+                    const textareaTextoDecifrado = document.querySelector('#texto_decifrado');
+                    const inputSenha = document.querySelector('#senha');
+
+                    function verificarElementoVazio(elemento) {
+                        return elemento.value.trim() === '';
+                    }
+
+                    // Função de Binario para Texto
+                    function binarioParaTexto(binario) {
+                        const binarioArray = binario.split(' ');
+                        const textoArray = binarioArray.map(bin => {
+                            const decimal = parseInt(bin, 2);
+                            return String.fromCharCode(decimal);
+                        });
+                        return textoArray.join('');
+                    }
+
+                    // Função de Reverter Texto
+                    function reverterTexto(texto) {
+                        if (typeof texto !== 'string') {
+                            throw new Error('O parâmetro deve ser uma string.');
+                        }
+                        return texto.split('').reverse().join('');
+                    }
+
+                    // Função de Remover Símbolos
+                    function removerSimbolos(string) {
+                        const regex = /[^01 ]/g; // Mantém apenas 0, 1 e espaços
+                        return string.replace(regex, '');
+                    }
+
+                    function descriptografarTexto(textoCodificadoValue, senha) {
+                    // Remover Símbolos
+                        let textoCodificado = textoCodificadoValue;
+                        let textoSemSimbolos = removerSimbolos(textoCodificado);
+                        
+
+                        // // Reverter Texto
+                        let textoRevertido = reverterTexto(textoSemSimbolos);
+
+                        // // Converter Binário para Texto
+                        let textoDescriptografado = binarioParaTexto(textoRevertido);
+
+                        return textoDescriptografado;
+                    }
+
+                    btnDescriptografar.addEventListener('click', () => {
+                        const textoCodificado = inputTextoCodificar.value.trim();
+                        const senha = inputSenha.value.trim();
+
+                        if (verificarElementoVazio(inputTextoCodificar) || verificarElementoVazio(inputSenha)) {
+                            alert('Por favor, preencha tanto o texto codificado quanto a senha.');
+                            return;
+                        }
+
+                        if (senha !== 'one') {
+                            // alert('Senha incorreta.');
+                            Swal.fire({
+                                icon: "error",
+                                title: "Oops...",
+                                text: "Senha que Você digitou está incorreta!!!",
+                                footer: 'Você não se Lembra? 😞😨'
+                            });
+                            return;
+                        }
+
+                        const textoDecifrado = descriptografarTexto(textoCodificado, senha);
+                        textareaTextoDecifrado.value = textoDecifrado;
+                        // Foco no campo de texto decifrado
+                        textareaTextoDecifrado.focus();
+                    });
+                }
+
+                document.addEventListener('DOMContentLoaded', inicializarDescriptor);
+            </script>
+        </body>
+
+        </html>
+    

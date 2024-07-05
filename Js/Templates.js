@@ -2,7 +2,7 @@ const all_Templates = [
     {
         "cartão de Namoro": {
             html: `
-                 <div class='cartao'>
+                <div class='cartao'>
                     <h1>Para o Amor da Minha Vida ❤️</h1>
                     <p>Meu amor por você é tão grande que até mesmo as palavras precisam de uma chave para serem reveladas... 💖</p>
                     <textarea id='texto_codificado' placeholder='Digite o texto codificado aqui' disabled></textarea>
@@ -12,144 +12,67 @@ const all_Templates = [
                 </div>
             `,
             style: `
-                 body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
+                body {
+                            font-family: Arial, sans-serif;
+                            background-color: #f0f0f0;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            height: 100vh;
+                            margin: 0;
+                        }
 
-        .cartao {
-            max-width: 600px;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
+                        .cartao {
+                            max-width: 600px;
+                            background-color: #fff;
+                            padding: 20px;
+                            border-radius: 10px;
+                            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                            text-align: center;
+                        }
 
-        h1 {
-            color: #c70039;
-        }
+                        h1 {
+                            color: #c70039;
+                        }
 
-        p {
-            color: #333;
-            margin-bottom: 20px;
-        }
+                        p {
+                            color: #333;
+                            margin-bottom: 20px;
+                        }
 
-        textarea,
-        input,
-        button {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 14px;
-        }
+                        textarea,
+                        input,
+                        button {
+                            width: 100%;
+                            padding: 10px;
+                            margin-bottom: 10px;
+                            border: 1px solid #ccc;
+                            border-radius: 5px;
+                            font-size: 14px;
+                        }
 
-        textarea {
-            min-height: 100px;
-        }
+                        textarea {
+                            min-height: 100px;
+                        }
 
-        button {
-            background-color: #c70039;
-            color: #fff;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
+                        button {
+                            background-color: #c70039;
+                            color: #fff;
+                            cursor: pointer;
+                            transition: background-color 0.3s ease;
+                        }
 
-        button:hover {
-            background-color: #960032;
-        }
+                        button:hover {
+                            background-color: #960032;
+                        }
 
-        textarea[readonly] {
-            background-color: #f0f0f0;
-            color: #666;
-        }
+                        textarea[readonly] {
+                            background-color: #f0f0f0;
+                            color: #666;
+                        }
             `,
             script: `
-                 function inicializarDescriptor() {
-            const btnDescriptografar = document.querySelector('.descriptografar');
-            const inputTextoCodificar = document.querySelector('#texto_codificado');
-            inputTextoCodificar.value = '0&1$0W0_1%1J1Z0C =1G161|1>0J1!1D0E :1A0C1_1K0%1^1)0) H1]0U090(0X1C1T0C [0Z0)0F020N1N0>0! D1T0T1W031S1K1J0+ 81^0:1Z0^0]1L1D0N *120:1V1J0L1E150_ ;0]0%0_090R120:02 F1P0=12160)1V1C0? 31(090F1>0$1?1R0B T1=0#1U1C0|1P1X0W V0&0#0^0=0+1H0Y0% E1@0?0(0W08181S0W }0,1&0?0M1C1I190I ]0&0U0_0W1F1L1(0( L0;030)070V1[0903 ,1P1D1W1S0}1G1B0S U0Q061;080*1^1M0? E1I0*1%0R1G1Y1J0T ;0N0)1(0,1X1H1Q06 ?0_0&0:0,0>1N0905 S1<0W0J1R0P1{1814 +0*0:0A0|0_1#0;0^ T0K1$0S1M0V1=121! L1F1G0^0:0!1>1^0P Y1F1[1#1?0R1H1J02 X0U121Q0(1K1N1&0- +0F0[0D0-071G0A0T N19070K0)0A1(1>08 @0I0A1&0D0,1;120G R1M0^0W120L151L0* K0&1&1A0L1T1?1%0( D0R0F0T0Z0{1!0I0Z @1M0%0!0V0:1V160) 90C0}0D1W0-1|1S0* P0>121H1:0F121:0] }1Y0{0]1N0V1%1,0> {1D071X1X0D1M1$0H P050*030S0D1N0!0) %1I0T0C0J0&1!1W0# X0!041:050Q1^1)0= ?0P0C0E0R0S1<0[0: -0N1%020!121C1{0; T1L1_1[1(0F1I1#0V N1^0(1}1402181L0; I1J0T0=0T0?1N120* J0?0!0(0L0W130*0S 31%1{0N0.1#1:1R0? S130Q0<1|0}1;1J0O 81M050)0<0)1[1Q0C :1Q0Z1V1E071:1-0= E1>0T1S0+0X1!1V0W :0)0%1M0_0(1|1U0: R060R0D0F0E1X0!0W J1{1%1%1G0]1I1=0# ;1<0V1(130Y1Y120Y .160,0{0R0:1>1K0# H0?0P070S0%1:0|0H ,1V0J1L0*0V1?180] 50W0A130F1E1V1{0O'
-            const textareaTextoDecifrado = document.querySelector('#texto_decifrado');
-            const inputSenha = document.querySelector('#senha');
-
-            function verificarElementoVazio(elemento) {
-                return elemento.value.trim() === '';
-            }
-
-              // Função de Binario para Texto
-            function binarioParaTexto(binario) {
-                const binarioArray = binario.split(' ');
-                const textoArray = binarioArray.map(bin => {
-                    const decimal = parseInt(bin, 2);
-                    return String.fromCharCode(decimal);
-                });
-                return textoArray.join('');
-            }
-
-            // Função de Reverter Texto
-            function reverterTexto(texto) {
-                if (typeof texto !== 'string') {
-                    throw new Error('O parâmetro deve ser uma string.');
-                }
-                return texto.split('').reverse().join('');
-            }
-
-            // Função de Remover Símbolos
-            function removerSimbolos(string) {
-                const regex = /[^01 ]/g; // Mantém apenas 0, 1 e espaços
-                return string.replace(regex, '');
-            }
-
-
-            function descriptografarTexto(textoCodificadoValue, senha) {
-               // Remover Símbolos
-                let textoCodificado = textoCodificadoValue;
-                let textoSemSimbolos = removerSimbolos(textoCodificado);
-                
-
-                // // Reverter Texto
-                let textoRevertido = reverterTexto(textoSemSimbolos);
-
-                // // Converter Binário para Texto
-                let textoDescriptografado = binarioParaTexto(textoRevertido);
-
-                return textoDescriptografado;
-
-            }
-
-            btnDescriptografar.addEventListener('click', () => {
-                const textoCodificado = inputTextoCodificar.value.trim();
-                const senha = inputSenha.value.trim();
-
-                if (verificarElementoVazio(inputTextoCodificar) || verificarElementoVazio(inputSenha)) {
-                    alert('Por favor, preencha tanto o texto codificado quanto a senha.');
-                    return;
-                }
-
-                if (senha !== '123') {
-                    // alert('Senha incorreta.');
-                    Swal.fire({
-                        icon: "error",
-                        title: "Oops...",
-                        text: "Senha que Você digitou está incorreta!!!",
-                    });
-                    return;
-                }
-
-                const textoDecifrado = descriptografarTexto(textoCodificado, senha);
-                textareaTextoDecifrado.value = textoDecifrado;
-                // Foco no campo de texto decifrado
-                textareaTextoDecifrado.focus();
-            });
-        }
-
+               
             `
         }
     }
@@ -167,6 +90,8 @@ function openPopup(htmlRender, scriptRender, styleRender) {
             <head>
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css'>
+                <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
                 <title>CripTexto</title>
                 <style>
                     ${styleRender}
@@ -177,14 +102,261 @@ function openPopup(htmlRender, scriptRender, styleRender) {
                 ${htmlRender}
             </body>
 
-            <script type="text/javascript">
+            <script >
                 ${scriptRender}
+                  function inicializarDescriptor() {
+                    const btnDescriptografar = document.querySelector('.descriptografar');
+                    const inputTextoCodificar = document.querySelector('#texto_codificado');
+                    inputTextoCodificar.value = '1|1&1:190Y171U0> U040&1#0{1J15150* F0|0R0G141<1B1Q0X |160X150,0%1,1;0! @0V0L1+0J1@0.160: O0P0}0W0D1I1B1N0E T1.020>1?0(1&1T0D J0>14040,1D1>1C0{ #1.190C0,0#031H0@ S07080*0$0I1P0N0= :1G1[1*1F0G1P1T0% R1[0K0$0U0%1W1I0Q -060>0K0A0Y1N0S0Z F1;181,1A0B1&140{ *0B0(1.0Y0I1*1O0Q ,0%1K1T1,0F1I1[0F )1?0X0=1?0]1K1N0( 60<1:1}0<1L1Z120+ 80L0|030@0:1&0X0B (1M0N1{1@0Z1^1X0J J1I0!1(0T0F1Z1%0H 50K1+0N0W0A1&1N0< N0Z0W0Z0S041)0O0: Z1-0(0Q0-0D1E1@1U H0@0S1G1S081N140H 71*1X1C1E0.0_1@0I';
+                    const textareaTextoDecifrado = document.querySelector('#texto_decifrado');
+                    const inputSenha = document.querySelector('#senha');
+                      inputSenha.placeholder = 'A senha para Acessar Aqui é 123'
+                    function verificarElementoVazio(elemento) {
+                        return elemento.value.trim() === '';
+                    }
+
+                    // Função de Binario para Texto
+                    function binarioParaTexto(binario) {
+                        const binarioArray = binario.split(' ');
+                        const textoArray = binarioArray.map(bin => {
+                            const decimal = parseInt(bin, 2);
+                            return String.fromCharCode(decimal);
+                        });
+                        return textoArray.join('');
+                    }
+
+                    // Função de Reverter Texto
+                    function reverterTexto(texto) {
+                        if (typeof texto !== 'string') {
+                            throw new Error('O parâmetro deve ser uma string.');
+                        }
+                        return texto.split('').reverse().join('');
+                    }
+
+                    // Função de Remover Símbolos
+                    function removerSimbolos(string) {
+                        const regex = /[^01 ]/g; // Mantém apenas 0, 1 e espaços
+                        return string.replace(regex, '');
+                    }
+
+
+                    function descriptografarTexto(textoCodificadoValue, senha) {
+                    // Remover Símbolos
+                        let textoCodificado = textoCodificadoValue;
+                        let textoSemSimbolos = removerSimbolos(textoCodificado);
+
+
+                        // // Reverter Texto
+                        let textoRevertido = reverterTexto(textoSemSimbolos);
+
+                        // // Converter Binário para Texto
+                        let textoDescriptografado = binarioParaTexto(textoRevertido);
+
+                        return textoDescriptografado;
+
+
+
+                    }
+
+                    btnDescriptografar.addEventListener('click', () => {
+                        const textoCodificado = inputTextoCodificar.value.trim();
+                        const senha = inputSenha.value.trim();
+
+                        if (verificarElementoVazio(inputTextoCodificar) || verificarElementoVazio(inputSenha)) {
+                            alert('Por favor, preencha tanto o texto codificado quanto a senha.');
+                            return;
+                        }
+
+                        if (senha !== '123') {
+                            // alert('Senha incorreta.');
+                            Swal.fire({
+                                icon: "error",
+                                title: "Oops...",
+                                text: "Senha que Você digitou está incorreta!!!",
+                            });
+                            return;
+                        }
+
+                        const textoDecifrado = descriptografarTexto(textoCodificado, senha);
+                        textareaTextoDecifrado.value = textoDecifrado;
+                        // Foco no campo de texto decifrado
+                        textareaTextoDecifrado.focus();
+                    });
+                }
+
+                document.addEventListener('DOMContentLoaded', inicializarDescriptor);
             </script>
         </html>
     `);
     popup.document.close();
 
+    if (!popup || popup.closed || typeof popup.closed === 'undefined') {
+        alert('O popup foi bloqueado pelo navegador. Verifique as configurações de bloqueio de popups.');
     }
+}
+
+function downloadTemplate_PrePronta(htmlRender, scriptRender, styleRender, templateName) {
+
+    if (texto_criptografador.value === "") {
+        Swal.fire({
+            icon: "error",
+            title: "Criar a Criptografia primeiro!!!",
+            customClass: {
+                title: 'swal-title',
+                content: 'swal-content',
+            }
+        });
+        return
+    } else {
+        Swal.fire({
+            title: "Senha do Documento ",
+            input: "password",
+            inputLabel: "Criar Senha",
+            inputPlaceholder: "Digite a Senha para salvar no Documento",
+            inputAttributes: {
+                maxlength: "10",
+                autocapitalize: "off",
+                autocorrect: "off"
+            },
+            showCancelButton: true,
+            preConfirm: (password) => {
+                return password;
+            }
+        }).then((result) => {
+            // console.log(result.value)
+            var content = `<!DOCTYPE html>
+            <html>
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css'>
+                    <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+                    <style>
+                        *{
+                        
+                            margin:0;
+                            padding:0;
+                            box-sizing: border-box;
+                        }
+                        
+                            body {
+                                font-family: Arial, sans-serif;
+                                width:100vw;
+                                height: 100vh;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                padding:1rem;
+                            }
+
+                            ${styleRender}
+                        </style>
+                    <title>${templateName}</title>
+                </head>
+
+                <body>
+                    ${htmlRender}
+                </body>
+
+                <script>
+                    function inicializarDescriptor() {
+                        const btnDescriptografar = document.querySelector('.descriptografar');
+                        const inputTextoCodificar = document.querySelector('#texto_codificado');
+                        inputTextoCodificar.value = \`${texto_criptografador.value}\`;
+                        const textareaTextoDecifrado = document.querySelector('#texto_decifrado');
+                        const inputSenha = document.querySelector('#senha');
+
+                        function verificarElementoVazio(elemento) {
+                            return elemento.value.trim() === '';
+                        }
+
+                        // Função de Binario para Texto
+                        function binarioParaTexto(binario) {
+                            const binarioArray = binario.split(' ');
+                            const textoArray = binarioArray.map(bin => {
+                                const decimal = parseInt(bin, 2);
+                                return String.fromCharCode(decimal);
+                            });
+                            return textoArray.join('');
+                        }
+
+                        // Função de Reverter Texto
+                        function reverterTexto(texto) {
+                            if (typeof texto !== 'string') {
+                                throw new Error('O parâmetro deve ser uma string.');
+                            }
+                            return texto.split('').reverse().join('');
+                        }
+
+                        // Função de Remover Símbolos
+                        function removerSimbolos(string) {
+                            const regex = /[^01 ]/g; // Mantém apenas 0, 1 e espaços
+                            return string.replace(regex, '');
+                        }
+
+                        function descriptografarTexto(textoCodificadoValue, senha) {
+                        // Remover Símbolos
+                            let textoCodificado = textoCodificadoValue;
+                            let textoSemSimbolos = removerSimbolos(textoCodificado);
+                            
+
+                            // // Reverter Texto
+                            let textoRevertido = reverterTexto(textoSemSimbolos);
+
+                            // // Converter Binário para Texto
+                            let textoDescriptografado = binarioParaTexto(textoRevertido);
+
+                            return textoDescriptografado;
+                        }
+
+                        btnDescriptografar.addEventListener('click', () => {
+                            const textoCodificado = inputTextoCodificar.value.trim();
+                            const senha = inputSenha.value.trim();
+
+                            if (verificarElementoVazio(inputTextoCodificar) || verificarElementoVazio(inputSenha)) {
+                                alert('Por favor, preencha tanto o texto codificado quanto a senha.');
+                                return;
+                            }
+
+                            if (senha !== '${result.value}') {
+                                // alert('Senha incorreta.');
+                                Swal.fire({
+                                    icon: "error",
+                                    title: "Oops...",
+                                    text: "Senha que Você digitou está incorreta!!!",
+                                });
+                                return;
+                            }
+
+                            const textoDecifrado = descriptografarTexto(textoCodificado, senha);
+                            textareaTextoDecifrado.value = textoDecifrado;
+                            // Foco no campo de texto decifrado
+                            textareaTextoDecifrado.focus();
+                        });
+                    }
+
+                    document.addEventListener('DOMContentLoaded', inicializarDescriptor);
+            </script>
+            </html>`
+
+            var blob = new Blob([content], { type: 'text/html' });
+            var url = URL.createObjectURL(blob);
+
+            var a = document.createElement('a');
+            a.href = url;
+            a.download = templateName + '.html';
+            document.body.appendChild(a);
+            a.click();
+
+            // Limpa a referência do URL do objeto após o download
+            URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+
+
+        })
+
+    }
+
 }
 
 function addTemplates(templates) {
@@ -203,12 +375,13 @@ function addTemplates(templates) {
                 </div>
                 <div class='container-button-modal'>
                     <button onclick="openPopup(\`${htmlContent}\`, \`${scriptContent}\`,\`${styleContent}\`)">Visualizar Modelo</button>
-                    <button onclick="">Baixar</button>
+                    <button onclick=" downloadTemplate_PrePronta(\`${htmlContent}\`, \`${scriptContent}\`,\`${styleContent}\`,\`${templateName}\`)">Baixar</button>
                 </div>
             </div>
             <hr>
         `;
     });
+   
 }
 
 addTemplates(all_Templates);

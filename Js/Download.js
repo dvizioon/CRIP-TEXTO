@@ -21,90 +21,56 @@ function saveDB(template, content) {
 
 
 async function createPdf() {
-    const { PDFDocument, rgb } = PDFLib;
+    const { jsPDF } = window.jspdf;
 
     const imageUrl = './Assets/Logo.jpg';
-    const imgBytes = await fetch(imageUrl).then(res => res.arrayBuffer());
-    const pdfDoc = await PDFDocument.create();
-    let img;
-    if (imageUrl.endsWith('.png')) {
-        img = await pdfDoc.embedPng(imgBytes);
-    } else if (imageUrl.endsWith('.jpg') || imageUrl.endsWith('.jpeg')) {
-        img = await pdfDoc.embedJpg(imgBytes);
-    } else {
-        throw new Error('Formato de imagem não suportado!');
-    }
+    const imgBytes = await fetch(imageUrl).then(res => res.blob());
+    const reader = new FileReader();
+    reader.readAsDataURL(imgBytes);
+    reader.onloadend = function () {
+        const base64data = reader.result;
 
-    const imgDims = img.scale(0.9);
-    const page = pdfDoc.addPage([600, 800]);
-    const x = (page.getWidth() - imgDims.width) / 2;
-    const y = (page.getHeight() - imgDims.height) / 2 + 270;
-    const padding = 5; 
-
-    page.drawImage(img, {
-        x: x,
-        y: y,
-        width: imgDims.width,
-        height: imgDims.height,
-    });
-
-    const content = texto_criptografador_doc.value;
-
-    const fontSize = 15;
-    const lineHeight = fontSize * 1.2;
-    const lines = content.split('\n').flatMap(line => {
-        const words = line.split(' ');
-        const lines = [];
-        let currentLine = '';
-        for (const word of words) {
-            if (currentLine.length + word.length + 1 <= 50) {
-                currentLine += (currentLine.length === 0 ? '' : ' ') + word;
-            } else {
-                lines.push(currentLine);
-                currentLine = word;
-            }
-        }
-        lines.push(currentLine);
-        return lines;
-    });
-
-    const textHeight = lines.length * lineHeight;
-    const textWidth = 500;
-    const textX = (page.getWidth() - textWidth) / 2;
-    const textY = y - 50 - textHeight;
-
-    const red = 10 / 255; 
-    const green = 56 / 255; 
-    const blue = 113 / 255; 
-
-    page.drawRectangle({
-        x: textX,
-        y: textY,
-        width: textWidth,
-        height: textHeight,
-        borderColor: rgb(red, green, blue),
-        borderWidth: 2,
-        padding: 2,
-    });
-
-    lines.forEach((line, i) => {
-        page.drawText(line, {
-            x: textX + 10,
-            y: textY + textHeight - lineHeight * (i + 1),
-            size: fontSize,
-            color: rgb(41 / 255, 186 / 255, 99 / 255), 
-            maxWidth: textWidth - 20,
+        const doc = new jsPDF({
+            unit: 'pt',
+            format: [600, 800]
         });
-    });
 
-    const pdfBytes = await pdfDoc.save();
-    const blob = new Blob([pdfBytes], { type: 'application/pdf' });
-    const link = document.createElement('a');
-    link.download = `${name_document.value}.pdf`;
-    link.href = URL.createObjectURL(blob);
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+        const content = texto_criptografador_doc.value;
+
+        const fontSize = 15;
+        const lineHeight = fontSize * 1.5;
+        const maxLineWidth = 500;
+        const marginX = (doc.internal.pageSize.getWidth() - maxLineWidth) / 2;
+        let currentY = 270 + 50;
+        const padding = 10;
+
+        const lines = doc.splitTextToSize(content, maxLineWidth - padding * 2);
+        const pageHeight = doc.internal.pageSize.getHeight();
+        const availableHeight = pageHeight - 100; 
+
+        doc.addImage(base64data, 'JPEG', 200, 0, 200, 200);
+
+        doc.setDrawColor(10, 56, 113);
+        doc.setLineWidth(2);
+        doc.rect(marginX - padding, currentY - padding, maxLineWidth + padding * 2, availableHeight - currentY + padding);
+
+        doc.setTextColor(41, 186, 99);
+        doc.setFontSize(fontSize);
+
+        lines.forEach((line, index) => {
+            if (currentY + lineHeight > availableHeight) {
+                doc.addPage();
+                currentY = 50; 
+                doc.setDrawColor(10, 56, 113);
+                doc.setLineWidth(2);
+                doc.rect(marginX - padding, currentY - padding, maxLineWidth + padding * 2, pageHeight - 100);
+            }
+            doc.text(line, marginX + padding, currentY + padding);
+            currentY += lineHeight;
+        });
+
+        doc.save(`${name_document.value}`);
+    };
 }
 
 // createPdf()
@@ -141,20 +107,9 @@ async function createPdf() {
 
 
 async function createPdfandKey() {
-    // Carregar a imagem
-    const imageUrl = './Assets/Logo.jpg';
-    const imgBytes = await fetch(imageUrl).then(res => res.arrayBuffer());
-    let imgDataUri;
 
-    // Carregar a imagem como Data URI para jsPDF
-    const imgBlob = new Blob([imgBytes], { type: 'image/jpeg' });
-    const reader = new FileReader();
-    reader.readAsDataURL(imgBlob);
-    reader.onloadend = function () {
-        imgDataUri = reader.result;
-    };
+    const { jsPDF } = window.jspdf;
 
-    // Exibir um alerta para definir a senha do documento
     const { value: userPassword } = await Swal.fire({
         title: 'Defina a senha do documento',
         input: 'password',
@@ -179,67 +134,77 @@ async function createPdfandKey() {
         }
     });
 
-    // Se o usuário cancelar ou não definir a senha, encerrar a função
     if (!userPassword) {
         return;
     }
 
-    // Configurações para desenhar o PDF com jsPDF
-    const doc = new jsPDF({
-        encryption: {
-            userPassword: userPassword,
-            ownerPassword: 'ower-123',
-            permissions: {
-                printing: 'highResolution',
-                modifying: false,
-                copying: false,
-                annotating: false,
-                fillingForms: false,
-                contentAccessibility: false,
-                documentAssembly: false,
+
+
+    const imageUrl = './Assets/Logo.jpg';
+    const imgBytes = await fetch(imageUrl).then(res => res.blob());
+    const reader = new FileReader();
+    reader.readAsDataURL(imgBytes);
+    reader.onloadend = function () {
+        const base64data = reader.result;
+
+
+        const doc = new jsPDF({
+            encryption: {
+                userPassword: userPassword,
+                ownerPassword: 'owner-123',
+                permissions: {
+                    printing: 'highResolution',
+                    modifying: false,
+                    copying: false,
+                    annotating: false,
+                    fillingForms: false,
+                    contentAccessibility: false,
+                    documentAssembly: false,
+                }
+            },
+            unit: 'pt',
+            format: [600, 800]
+        });
+
+        const content = texto_criptografador_doc.value;
+
+        const fontSize = 15;
+        const lineHeight = fontSize * 1.5;
+        const maxLineWidth = 500;
+        const marginX = (doc.internal.pageSize.getWidth() - maxLineWidth) / 2;
+        let currentY = 270 + 50;
+        const padding = 10;
+
+        const lines = doc.splitTextToSize(content, maxLineWidth - padding * 2);
+        const pageHeight = doc.internal.pageSize.getHeight();
+        const availableHeight = pageHeight - 100;
+
+        doc.addImage(base64data, 'JPEG', 400, 0, 200, 200);
+
+        doc.setDrawColor(10, 56, 113);
+        doc.setLineWidth(2);
+        doc.rect(marginX - padding, currentY - padding, maxLineWidth + padding * 2, availableHeight - currentY + padding);
+
+        doc.setTextColor(41, 186, 99);
+        doc.setFontSize(fontSize);
+
+        lines.forEach((line, index) => {
+            if (currentY + lineHeight > availableHeight) {
+                doc.addPage();
+                currentY = 50;
+                doc.setDrawColor(10, 56, 113);
+                doc.setLineWidth(2);
+                doc.rect(marginX - padding, currentY - padding, maxLineWidth + padding * 2, pageHeight - 100);
             }
-        }
-        
-    });
+            doc.text(line, marginX + padding, currentY + padding);
+            currentY += lineHeight;
+        });
 
-    // Incorporar a imagem no documento PDF
-    if (imgDataUri) {
-        doc.addImage(imgDataUri, 'JPEG', 40, 40, 100, 100); // Exemplo de posição e tamanho
-    } else {
-        throw new Error('Formato de imagem não suportado!');
-    }
-
-    // Obter o conteúdo do textarea
-    const content = texto_criptografador_doc.value;
-
-    // Configurações para desenhar o retângulo e o texto no PDF
-    const fontSize = 12;
-    const margin = 10;
-    let y = 160; // Posição inicial do texto
-
-    // Desenhar retângulo
-    doc.rect(margin, y - margin, doc.internal.pageSize.width - margin * 2, doc.internal.pageSize.height - margin * 2, 'S');
-
-    // Dividir o conteúdo em linhas e desenhar no PDF
-    const lines = doc.splitTextToSize(content, doc.internal.pageSize.width - margin * 2);
-    doc.setFontSize(fontSize);
-    doc.setTextColor(0, 0, 0);
-    lines.forEach(line => {
-        doc.text(line, margin, y);
-        y += fontSize + 5; // Espaçamento entre linhas
-    });
-
-    // Salvar e baixar o documento PDF
-
-    // if (!!name.value === "", Object.prototype(name.value)) {
-    //         doc.save(`PDF is not Valid`)
-    // } else {
-    //         doc.save(`is Valid`)
-    // }
-
-
-    doc.save(`${name_document.value}.pdf`);
+        doc.save(`${name_document.value}`);
+    };
 }
+
+
 
 // createPdfandKey()
 

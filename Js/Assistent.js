@@ -167,14 +167,18 @@ btn_search.addEventListener('click', function () {
                 console.log('Não foi possível encontrar o código dentro das marcações """ ... """');
             }
 
-
-
         })
         .catch(error => {
-            // container_frame.innerHTML = ``
-            // container_frame.innerHTML = `
-            //     <button class='proxy-button'>Veja as Configurarações de Proxy</button>
-            // `
+            container_frame.innerHTML = ``
+            container_frame.innerHTML = `
+            <div class='info'>
+                <p>Click no Butão para Liberar</p>
+                <p>Depois Realize a pesquisa novamente</p>
+                <a href="https://cors-anywhere.herokuapp.com/corsdemo" target="_blank">Entre aqui caso não funcione !!!</a>
+            </div>
+                <iframe src="https://cors-anywhere.herokuapp.com/corsdemo"></iframe>
+                                <iframe src="https://cors-anywhere.herokuapp.com/"></iframe>
+            `
             console.error('Erro na requisição:', error);
         });
 

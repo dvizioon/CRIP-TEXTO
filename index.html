@@ -20,7 +20,7 @@
     <script src="./Plugins/Import.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="text/javascript" src="./db/src/LocalDB.js"></script>
-    
+
     <title>CripTexto</title>
 </head>
 
@@ -38,6 +38,36 @@
             <li></li>
             <li></li>
         </ul>
+    </div>
+
+    <div id="modal-configuration" class="modal-configuration">
+        <div class="modal-content-configuration">
+            <span class="close">&times;</span>
+            <h2>Configuration</h2>
+            <div class="configuration-content">
+                <div class="configuration-label-checkbox">
+                    <label class="switch">
+                        <input type="checkbox" id="letras" checked>
+                        <span class="slider"></span>
+                    </label>
+                    <label>Ativar Letras</label>
+                </div>
+                <div class="configuration-label-checkbox">
+                    <label class="switch">
+                        <input type="checkbox" id="numeros" checked>
+                        <span class="slider"></span>
+                    </label>
+                    <label>Ativar Numeros</label>
+                </div>
+                <div class="configuration-label-checkbox">
+                    <label class="switch">
+                        <input type="checkbox" id="simbolos" checked>
+                        <span class="slider"></span>
+                    </label>
+                    <label>Ativar Simbolos</label>
+                </div>
+            </div>
+        </div>
     </div>
 
 
@@ -92,7 +122,7 @@
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2>Desenhar Template</h2>
-            
+
             <div class="paint">
                 <div class="modal_paint_tools" style="position: relative;">
                     <div class="panel-security">
@@ -164,7 +194,7 @@
                                 <img src="./Assets/Icons/History.svg" alt="icon Ferramentas" />
                             </button>
                         </div>
-                        <div class="button_icon">
+                        <div class="button_icon" id="shareButton">
                             <button>
                                 Share
                                 <img src="./Assets/Icons/Share.svg" alt="icon Compartilhar" />
@@ -215,7 +245,7 @@
                             </svg>
                         </button>
 
-                        <button>
+                        <button id="openModalConfigurationBtn">
                             Configurar
                             <img src="./Assets/Icons/Config.svg" alt="icon Ferramentas" />
                         </button>
@@ -270,6 +300,7 @@
     <script>
         window.jsPDF = window.jspdf.jsPDF;
     </script>
+    <script src="./Js/Configuration.js"></script>
     <script src="./Js/Download.js"></script>
     <script src="./Js/Criptografar.js"></script>
     <script src="./Js/Descriptografar.js"></script>

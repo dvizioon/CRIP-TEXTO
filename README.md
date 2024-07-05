@@ -269,7 +269,7 @@ const all_Templates = [
 <img src="./Assets/Screenshots/04.png" alt="" />
 <img src="./Assets/Screenshots/05.png" alt="" />
 <img src="./Assets/Screenshots/06.png" alt="" />
-
+<img src="./Assets/Screenshots/13.png" alt="" />
 
 ## Instalação
 
